@@ -1,0 +1,407 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+.navigation-bar {
+  margin: 46px;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+}
+
+nav .burger-menu-slice {
+  height: 3px;
+  width: 50px;
+  background-color: #2E2E2E;
+  margin: 12px;
+}
+
+.burger-menu-init {
+  cursor: pointer;
+  position: relative;
+}
+
+.burger-menu {
+  animation-name: closingRotation;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  cursor: pointer;
+  position: relative;
+}
+
+@keyframes closingRotation {
+  0%   {transform: rotate(90deg);}
+  50%  {transform: rotate(90deg);}
+  100% {transform: rotate(0deg);}
+}
+
+.rotated-burger-menu {
+  position: relative;
+  animation-name: openingRotation;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes openingRotation {
+  0%   {transform: rotate(0deg);}
+  100% {transform: rotate(90deg);}
+}
+
+.rotated-burger-menu .burger-menu-slice:first-child {
+  position: absolute;
+  animation-name: extendSlice;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.4s;
+}
+
+.burger-menu-init .burger-menu-slice:first-child {
+  position: absolute;
+}
+
+@keyframes extendSlice {
+  0% {height: 3px;}
+  100% {height: 630px;}
+}
+
+.burger-menu .burger-menu-slice:first-child {
+  position: absolute;
+  animation-name: shrinkSlice;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes shrinkSlice {
+  0% {height: 630px;}
+  100% {height: 3px;}
+}
+
+nav .nav-sections {
+  position: absolute;
+  right: 22px;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(-100%);
+  margin-top: -7px;
+}
+
+.shown-nav-sections {
+  animation-name: showNavSections;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showNavSections {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);}
+}
+
+.hidden-nav-sections {
+  animation-name: hideNavSections;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes hideNavSections {
+  0% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);}
+}
+
+nav .nav-sections ul {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+}
+
+nav .nav-sections ul li {
+  margin-right: 20px;
+}
+
+nav .nav-sections ul li a {
+  text-decoration: none;
+  font-size: 18px;
+  font-family: "Montserrat";
+  color: #F8F8F8;
+}
+
+nav .nav-sections .close-btn {
+  position: relative;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+nav .nav-sections .close-btn .close-btn-slice {
+  width: 46px;
+  height: 2px;
+  background-color: #F8F8F8;
+  position: absolute;
+}
+
+nav .nav-sections .close-btn .close-btn-slice:first-child {
+  transform: rotate(45deg);
+}
+
+nav .nav-sections .close-btn .close-btn-slice:last-child {
+  transform: rotate(-45deg);
+}
+
+.mobile-nav-button {
+  display: none;
+}
+
+@media screen and (max-width: 784px) {
+  .navigation-bar {
+    margin: 0px;
+  }
+
+  .mobile-nav-background {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    background-color: #EBEBEB;
+    transform: translateX(100%);
+  }
+
+  .shown-mobile-nav-background {
+    animation-name: showMobileNavBackground;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes showMobileNavBackground {
+    0% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0%);}
+  }
+
+  .hidden-mobile-nav-background {
+    animation-name: hideMobileNavBackground;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes hideMobileNavBackground {
+    0% {
+      opacity: 1;
+      transform: translateX(0%);
+    }
+    100% {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+  }
+
+  .burger-menu-init, .burger-menu, .rotated-burger-menu {
+    display: none;
+  }
+
+  nav .mobile-nav-button, nav .closing-mobile-nav, nav .mobile-nav-button-init {
+    display: block;
+    cursor: pointer;
+    position: relative;
+    height: 34px;
+    width: 50px;
+    margin: 30px;
+  }
+
+  nav .closing-mobile-nav .mobile-nav-button-slice, nav .mobile-nav-button .mobile-nav-button-slice, nav .mobile-nav-button-init .mobile-nav-button-slice {
+    height: 3px;
+    width: 50px;
+    background-color: #2E2E2E;
+    position: absolute;
+    transform-origin: left;
+  }
+
+  nav .mobile-nav-button-init .mobile-nav-button-slice:first-child, nav .mobile-nav-button .mobile-nav-button-slice:first-child {
+    top: 0;
+  }
+
+  nav .mobile-nav-button-init .mobile-nav-button-slice:nth-child(2), nav .mobile-nav-button .mobile-nav-button-slice:nth-child(2) {
+    top: 48%;
+  }
+
+  nav .mobile-nav-button-init .mobile-nav-button-slice:last-child, nav .mobile-nav-button .mobile-nav-button-slice:last-child {
+    bottom: 0%;
+  }
+
+  nav .mobile-nav-button .mobile-nav-button-slice:first-child {
+    animation-name: closeMobileNavSlice1;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  nav .mobile-nav-button .mobile-nav-button-slice:nth-child(2) {
+    animation-name: closeMobileNavSlice2;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  nav .mobile-nav-button .mobile-nav-button-slice:last-child {
+    animation-name: closeMobileNavSlice3;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  nav .closing-mobile-nav .mobile-nav-button-slice:first-child {
+    animation-name: openMobileNavSlice1;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    top: 0;
+    left: 0
+  }
+
+  nav .closing-mobile-nav .mobile-nav-button-slice:nth-child(2) {
+    opacity: 0
+  }
+
+  nav .closing-mobile-nav .mobile-nav-button-slice:last-child {
+    animation-name: openMobileNavSlice3;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    bottom: 0;
+    left: 0
+  }
+
+  @keyframes openMobileNavSlice1 {
+    0% {transform: rotate(0deg);}
+    100% {
+      transform: rotate(45deg);
+      margin-top: -3px;
+      margin-left: 7px
+    }
+  }
+
+  @keyframes openMobileNavSlice2 {
+    0% {opacity: 1;}
+    100% {opacity: 0}
+  }
+
+  @keyframes openMobileNavSlice3 {
+    0% {transform: rotate(0deg);}
+    100% {
+      transform: rotate(-45deg);
+      margin-bottom: -2px;
+      margin-left: 7px;
+      }
+  }
+
+  @keyframes closeMobileNavSlice1 {
+    0% {transform: rotate(45deg);}
+    100% {
+      transform: rotate(0deg);
+      margin-top: 0px;
+      margin-left: 0px
+    }
+  }
+
+  @keyframes closeMobileNavSlice2 {
+    0% {opacity: 0;}
+    100% {opacity: 1}
+  }
+
+  @keyframes closeMobileNavSlice3 {
+    0% {transform: rotate(-45deg);}
+    100% {
+      transform: rotate(0deg);
+      margin-bottom: 0px;
+      margin-left: 0px;
+      }
+  }
+
+  nav .nav-sections {
+    position: fixed;
+    right: 50%;
+    top: 50%;
+    z-index: 10000;
+    opacity: 0;
+    transform: translate(80%, -50%);
+    pointer-events: none;
+  }
+
+  .shown-nav-sections {
+    animation-name: showNavSections;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    pointer-events: auto!important;
+  }
+
+  @keyframes showNavSections {
+    0% {
+      opacity: 0;
+      transform: translate(80%, -50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(50%, -50%);
+    }
+  }
+
+  .hidden-nav-sections {
+    animation-name: hideNavSections;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes hideNavSections {
+    0% {
+      opacity: 1;
+      transform: translate(50%, -50%);;
+    }
+    100% {
+      opacity: 0;
+      transform: translate(80%, -50%);;
+    }
+  }
+
+  nav .nav-sections ul {
+    display: block;
+    text-align: center;
+    padding-left: 0px;
+  }
+
+  nav .nav-sections ul li {
+    margin: 30px;
+  }
+
+  nav .nav-sections ul li a {
+    font-size: 28px;
+    color: #2E2E2E;
+  }
+
+  nav .nav-sections ul li:last-child {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 500px) {
+  nav .nav-sections ul li a {
+    font-size: 20px;
+  }
+}
